@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stack | DSA Visualizer</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="logo">🧩 DSA Visualizer</a>
+    <div class="links">
+      <a href="linkedlist.html">Linked List</a>
+      <a href="stack.html">Stack</a>
+      <a href="queue.html">Queue</a>
+      <a href="tree.html">Tree</a>
+      <a href="graph.html">Graph</a>
+      <a href="sorting.html">Sorting</a>
+      <a href="searching.html">Searching</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1 class="page-title">📚 Stack (LIFO)</h1>
+    <p class="page-desc">
+      A stack works like a pile of plates: the <b>last</b> item you put in is the
+      <b>first</b> one you take out (Last In, First Out). You can only add or
+      remove from the top.
+    </p>
+
+    <div class="controls">
+      <input type="number" id="valueInput" placeholder="Value" />
+      <button onclick="push()">Push (add top)</button>
+      <button class="danger" onclick="pop()">Pop (remove top)</button>
+      <button class="secondary" onclick="peek()">Peek (see top)</button>
+      <button class="secondary" onclick="clearStack()">Clear</button>
+    </div>
+
+    <div class="viz">
+      <div class="stack" id="stackArea"></div>
+    </div>
+
+    <div class="message" id="message">Push a value to add it to the top of the stack.</div>
+  </div>
+
+  <script src="../js/stack.js"></script>
+</body>
+</html>

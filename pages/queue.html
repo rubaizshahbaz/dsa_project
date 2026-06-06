@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Queue | DSA Visualizer</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="logo">🧩 DSA Visualizer</a>
+    <div class="links">
+      <a href="linkedlist.html">Linked List</a>
+      <a href="stack.html">Stack</a>
+      <a href="queue.html">Queue</a>
+      <a href="tree.html">Tree</a>
+      <a href="graph.html">Graph</a>
+      <a href="sorting.html">Sorting</a>
+      <a href="searching.html">Searching</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1 class="page-title">🚶‍♂️ Queue (FIFO)</h1>
+    <p class="page-desc">
+      A queue works like a line at a shop: the <b>first</b> person to join is the
+      <b>first</b> to be served (First In, First Out). We add at the rear and
+      remove from the front.
+    </p>
+
+    <div class="controls">
+      <input type="number" id="valueInput" placeholder="Value" />
+      <button onclick="enqueue()">Enqueue (add rear)</button>
+      <button class="danger" onclick="dequeue()">Dequeue (remove front)</button>
+      <button class="secondary" onclick="peek()">Peek (see front)</button>
+      <button class="secondary" onclick="clearQueue()">Clear</button>
+    </div>
+
+    <div class="viz">
+      <div class="queue" id="queueArea"></div>
+    </div>
+
+    <div class="message" id="message">Enqueue a value to add it to the rear of the queue.</div>
+  </div>
+
+  <script src="../js/queue.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Graph | DSA Visualizer</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="logo">🧩 DSA Visualizer</a>
+    <div class="links">
+      <a href="linkedlist.html">Linked List</a>
+      <a href="stack.html">Stack</a>
+      <a href="queue.html">Queue</a>
+      <a href="tree.html">Tree</a>
+      <a href="graph.html">Graph</a>
+      <a href="sorting.html">Sorting</a>
+      <a href="searching.html">Searching</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1 class="page-title">🕸️ Graph</h1>
+    <p class="page-desc">
+      A graph is a set of nodes (vertices) connected by edges. Add nodes, connect
+      them with edges, then watch <b>BFS</b> (breadth-first) and <b>DFS</b>
+      (depth-first) explore the graph.
+    </p>
+
+    <div class="controls">
+      <button onclick="addNode()">Add Node</button>
+      <input type="number" id="fromInput" placeholder="From node" />
+      <input type="number" id="toInput" placeholder="To node" />
+      <button onclick="addEdge()">Add Edge</button>
+      <input type="number" id="startInput" placeholder="Start node" />
+      <button class="secondary" onclick="runBFS()">Run BFS</button>
+      <button class="secondary" onclick="runDFS()">Run DFS</button>
+      <button class="secondary" onclick="loadSample()">Load Sample</button>
+      <button class="danger" onclick="clearGraph()">Clear</button>
+    </div>
+
+    <div class="viz">
+      <svg class="canvas" id="graphCanvas"></svg>
+    </div>
+
+    <div class="message" id="message">Add a few nodes, connect them with edges, then run BFS or DFS.</div>
+  </div>
+
+  <script src="../js/graph.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Searching | DSA Visualizer</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="logo">🧩 DSA Visualizer</a>
+    <div class="links">
+      <a href="linkedlist.html">Linked List</a>
+      <a href="stack.html">Stack</a>
+      <a href="queue.html">Queue</a>
+      <a href="tree.html">Tree</a>
+      <a href="graph.html">Graph</a>
+      <a href="sorting.html">Sorting</a>
+      <a href="searching.html">Searching</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1 class="page-title">🔍 Searching Algorithms</h1>
+    <p class="page-desc">
+      <b>Linear search</b> checks every value one by one. <b>Binary search</b>
+      only works on a sorted array and repeatedly cuts the search range in half,
+      so it is much faster.
+    </p>
+
+    <div class="controls">
+      <button class="secondary" onclick="newArray()">New Sorted Array</button>
+      <input type="number" id="targetInput" placeholder="Search value" />
+      <button onclick="startSearch('linear')">Linear Search</button>
+      <button onclick="startSearch('binary')">Binary Search</button>
+    </div>
+
+    <div class="viz">
+      <div class="bars" id="barsArea"></div>
+      <div class="legend">
+        Legend:
+        <span style="background:#4f46e5"></span> not checked
+        <span style="background:#a78bfa"></span> current range
+        <span style="background:#f59e0b"></span> checking
+        <span style="background:#10b981"></span> found
+      </div>
+    </div>
+
+    <div class="message" id="message">Make a sorted array, type a value, then choose a search method.</div>
+  </div>
+
+  <script src="../js/searching.js"></script>
+</body>
+</html>

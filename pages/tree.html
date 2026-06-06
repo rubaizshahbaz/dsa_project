@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Binary Search Tree | DSA Visualizer</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="logo">🧩 DSA Visualizer</a>
+    <div class="links">
+      <a href="linkedlist.html">Linked List</a>
+      <a href="stack.html">Stack</a>
+      <a href="queue.html">Queue</a>
+      <a href="tree.html">Tree</a>
+      <a href="graph.html">Graph</a>
+      <a href="sorting.html">Sorting</a>
+      <a href="searching.html">Searching</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1 class="page-title">🌳 Binary Search Tree</h1>
+    <p class="page-desc">
+      In a Binary Search Tree, smaller values go to the <b>left</b> and larger
+      values go to the <b>right</b>. This keeps the data sorted and makes
+      searching fast.
+    </p>
+
+    <div class="controls">
+      <input type="number" id="valueInput" placeholder="Value" />
+      <button onclick="insertNode()">Insert</button>
+      <button class="danger" onclick="deleteNode()">Delete</button>
+      <button class="secondary" onclick="searchNode()">Search</button>
+      <button class="secondary" onclick="inorder()">Inorder Traversal</button>
+      <button class="secondary" onclick="clearTree()">Clear</button>
+    </div>
+
+    <div class="viz">
+      <svg class="canvas" id="treeCanvas"></svg>
+    </div>
+
+    <div class="message" id="message">Insert numbers to build the tree.</div>
+  </div>
+
+  <script src="../js/tree.js"></script>
+</body>
+</html>

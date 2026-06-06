@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Linked List | DSA Visualizer</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="logo">🧩 DSA Visualizer</a>
+    <div class="links">
+      <a href="linkedlist.html">Linked List</a>
+      <a href="stack.html">Stack</a>
+      <a href="queue.html">Queue</a>
+      <a href="tree.html">Tree</a>
+      <a href="graph.html">Graph</a>
+      <a href="sorting.html">Sorting</a>
+      <a href="searching.html">Searching</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1 class="page-title">🔗 Linked List</h1>
+    <p class="page-desc">
+      A linked list is a chain of nodes. Each node stores a value and points to
+      the next node. Try inserting, deleting and searching below.
+    </p>
+
+    <div class="controls">
+      <input type="number" id="valueInput" placeholder="Value" />
+      <button onclick="insertHead()">Insert at Head</button>
+      <button onclick="insertTail()">Insert at Tail</button>
+      <input type="number" id="posInput" placeholder="Position" />
+      <button onclick="insertAt()">Insert at Position</button>
+      <button class="danger" onclick="deleteValue()">Delete Value</button>
+      <button class="secondary" onclick="searchValue()">Search</button>
+      <button class="secondary" onclick="clearList()">Clear</button>
+    </div>
+
+    <div class="viz">
+      <div class="linkedlist" id="listArea"></div>
+    </div>
+
+    <div class="message" id="message">Add a value and click an insert button to begin.</div>
+  </div>
+
+  <script src="../js/linkedlist.js"></script>
+</body>
+</html>

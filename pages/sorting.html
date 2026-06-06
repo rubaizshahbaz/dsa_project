@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sorting | DSA Visualizer</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="logo">🧩 DSA Visualizer</a>
+    <div class="links">
+      <a href="linkedlist.html">Linked List</a>
+      <a href="stack.html">Stack</a>
+      <a href="queue.html">Queue</a>
+      <a href="tree.html">Tree</a>
+      <a href="graph.html">Graph</a>
+      <a href="sorting.html">Sorting</a>
+      <a href="searching.html">Searching</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1 class="page-title">📊 Sorting Algorithms</h1>
+    <p class="page-desc">
+      Watch how sorting algorithms arrange numbers from smallest to largest.
+      Orange bars are being compared, red bars are being swapped, and green bars
+      are in their final sorted place.
+    </p>
+
+    <div class="controls">
+      <button class="secondary" onclick="newArray()">New Random Array</button>
+      <button onclick="startSort('bubble')">Bubble Sort</button>
+      <button onclick="startSort('selection')">Selection Sort</button>
+      <button onclick="startSort('insertion')">Insertion Sort</button>
+    </div>
+
+    <div class="viz">
+      <div class="bars" id="barsArea"></div>
+      <div class="legend">
+        Legend:
+        <span style="background:#4f46e5"></span> unsorted
+        <span style="background:#f59e0b"></span> comparing
+        <span style="background:#ef4444"></span> swapping
+        <span style="background:#10b981"></span> sorted
+      </div>
+    </div>
+
+    <div class="message" id="message">Click "New Random Array", then pick a sorting algorithm.</div>
+  </div>
+
+  <script src="../js/sorting.js"></script>
+</body>
+</html>
