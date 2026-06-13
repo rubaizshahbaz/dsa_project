@@ -1,7 +1,4 @@
-/* =========================================================
-   QUEUE VISUALIZER  (FIFO - First In, First Out)
-   Add at the REAR (end), remove from the FRONT (start).
-   ========================================================= */
+
 
 let queue = [];
 
@@ -20,27 +17,27 @@ function showMessage(text) {
   document.getElementById("message").textContent = text;
 }
 
-// ENQUEUE: add a value to the rear of the queue.
+
 function enqueue() {
   const value = getValue();
   if (value === null) return;
   queue.push(value);
-  draw(queue.length - 1);     // animate the new rear item
+  draw(queue.length - 1);     
   showMessage("Enqueued " + value + " at the rear.");
 }
 
-// DEQUEUE: remove the value at the front.
+
 function dequeue() {
   if (queue.length === 0) {
     showMessage("Queue is empty, nothing to dequeue.");
     return;
   }
-  const removed = queue.shift();    // remove from the front
+  const removed = queue.shift();    
   draw();
   showMessage("Dequeued " + removed + " from the front.");
 }
 
-// PEEK: look at the front value without removing it.
+
 function peek() {
   if (queue.length === 0) {
     showMessage("Queue is empty, nothing to peek.");
@@ -61,7 +58,7 @@ function clearQueue() {
   showMessage("Queue cleared.");
 }
 
-// Redraw the queue from front (left) to rear (right).
+
 function draw(newIndex = -1) {
   const area = document.getElementById("queueArea");
   area.innerHTML = "";
@@ -80,14 +77,14 @@ function draw(newIndex = -1) {
     node.textContent = value;
     wrapper.appendChild(node);
 
-    // Label the front and rear so the structure is clear.
+    
     const label = document.createElement("div");
     label.style.fontSize = "12px";
     label.style.color = "#6b7280";
     label.style.marginTop = "4px";
     if (i === 0) label.textContent = "front";
     else if (i === queue.length - 1) label.textContent = "rear";
-    else label.textContent = " ";  // non-breaking space to keep height
+    else label.textContent = " ";  
     wrapper.appendChild(label);
 
     area.appendChild(wrapper);
