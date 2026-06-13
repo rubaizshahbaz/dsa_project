@@ -1,8 +1,4 @@
-/* =========================================================
-   STACK VISUALIZER  (LIFO - Last In, First Out)
-   We only add / remove from the TOP of the stack.
-   The stack is stored as an array; the last item is the top.
-   ========================================================= */
+
 
 let stack = [];
 
@@ -21,16 +17,16 @@ function showMessage(text) {
   document.getElementById("message").textContent = text;
 }
 
-// PUSH: add a new value on top of the stack.
+
 function push() {
   const value = getValue();
   if (value === null) return;
   stack.push(value);
-  draw(true);                 // animate the newest (top) item
+  draw(true);                 
   showMessage("Pushed " + value + " onto the stack.");
 }
 
-// POP: remove and return the top value.
+
 function pop() {
   if (stack.length === 0) {
     showMessage("Stack is empty, nothing to pop.");
@@ -41,14 +37,14 @@ function pop() {
   showMessage("Popped " + removed + " from the top.");
 }
 
-// PEEK: look at the top value without removing it.
+
 function peek() {
   if (stack.length === 0) {
     showMessage("Stack is empty, nothing to peek.");
     return;
   }
   draw();
-  // Highlight the top node briefly.
+  
   const nodes = document.querySelectorAll("#stackArea .node");
   const top = nodes[nodes.length - 1];
   if (top) {
@@ -64,7 +60,7 @@ function clearStack() {
   showMessage("Stack cleared.");
 }
 
-// Redraw the stack. animateTop = play pop animation on the top node.
+
 function draw(animateTop = false) {
   const area = document.getElementById("stackArea");
   area.innerHTML = "";
