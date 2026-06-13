@@ -1,20 +1,15 @@
-/* =========================================================
-   GRAPH VISUALIZER
-   Nodes are numbered 0, 1, 2, ...
-   Edges are stored as an "adjacency list": for each node we
-   keep a list of the nodes it connects to (undirected graph).
-   ========================================================= */
+
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 
-let nodeCount = 0;          // how many nodes exist
-let adj = {};               // adjacency list: adj[node] = [neighbours]
+let nodeCount = 0;         
+let adj = {};               
 
 function showMessage(text) {
   document.getElementById("message").textContent = text;
 }
 
-// Add a new node with the next number.
+
 function addNode() {
   adj[nodeCount] = [];
   nodeCount++;
@@ -22,7 +17,7 @@ function addNode() {
   showMessage("Added node " + (nodeCount - 1) + ".");
 }
 
-// Connect two existing nodes with an edge (both directions).
+
 function addEdge() {
   const from = parseInt(document.getElementById("fromInput").value);
   const to = parseInt(document.getElementById("toInput").value);
@@ -50,7 +45,7 @@ function addEdge() {
   showMessage("Connected node " + from + " and node " + to + ".");
 }
 
-// Read the start node, defaulting to 0.
+
 function getStart() {
   let start = parseInt(document.getElementById("startInput").value);
   if (isNaN(start)) start = 0;
@@ -61,7 +56,7 @@ function getStart() {
   return start;
 }
 
-/* ---------- BFS: explore level by level using a QUEUE ---------- */
+
 function runBFS() {
   const start = getStart();
   if (start === null) return;
@@ -72,9 +67,9 @@ function runBFS() {
   visited.add(start);
 
   while (queue.length > 0) {
-    const node = queue.shift();         // take from the front
+    const node = queue.shift();         
     order.push(node);
-    // Visit neighbours in numeric order.
+    
     adj[node].slice().sort((a, b) => a - b).forEach((next) => {
       if (!visited.has(next)) {
         visited.add(next);
@@ -85,7 +80,7 @@ function runBFS() {
   animateOrder(order, "BFS");
 }
 
-/* ---------- DFS: go as deep as possible using a STACK ---------- */
+
 function runDFS() {
   const start = getStart();
   if (start === null) return;
@@ -93,7 +88,7 @@ function runDFS() {
   const visited = new Set();
   const order = [];
 
-  // Recursive helper.
+  
   function visit(node) {
     visited.add(node);
     order.push(node);
@@ -105,7 +100,7 @@ function runDFS() {
   animateOrder(order, "DFS");
 }
 
-// Highlight each visited node one at a time.
+
 function animateOrder(order, name) {
   draw();
   let step = 0;
@@ -121,7 +116,7 @@ function animateOrder(order, name) {
   showMessage("Running " + name + "...");
 }
 
-// A ready-made example graph so users can try traversal quickly.
+
 function loadSample() {
   nodeCount = 0;
   adj = {};
@@ -139,9 +134,7 @@ function clearGraph() {
   showMessage("Graph cleared.");
 }
 
-/* =========================================================
-   DRAWING - place nodes evenly around a circle.
-   ========================================================= */
+
 function draw() {
   const svg = document.getElementById("graphCanvas");
   svg.innerHTML = "";
@@ -157,7 +150,7 @@ function draw() {
   const cy = height / 2;
   const radius = Math.min(cx, cy) - 50;
 
-  // Work out each node's position on the circle.
+ 
   const pos = {};
   for (let i = 0; i < nodeCount; i++) {
     const angle = (2 * Math.PI * i) / nodeCount - Math.PI / 2;
@@ -167,7 +160,7 @@ function draw() {
     };
   }
 
-  // Draw edges first (behind nodes). Skip duplicates with a < b check.
+
   for (let a = 0; a < nodeCount; a++) {
     adj[a].forEach((b) => {
       if (a < b) {
@@ -182,7 +175,7 @@ function draw() {
     });
   }
 
-  // Draw nodes (circle + number).
+ 
   for (let i = 0; i < nodeCount; i++) {
     const circle = document.createElementNS(SVG_NS, "circle");
     circle.setAttribute("cx", pos[i].x);
