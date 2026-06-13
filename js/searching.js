@@ -1,9 +1,4 @@
-/* =========================================================
-   SEARCHING VISUALIZER
-   Same idea as sorting: record "frames" while searching, then
-   play them back so the user can follow each step.
-   The array is kept SORTED so binary search works correctly.
-   ========================================================= */
+
 
 let array = [];
 let frames = [];
@@ -13,18 +8,18 @@ function showMessage(text) {
   document.getElementById("message").textContent = text;
 }
 
-// Build a new sorted array of random numbers.
+
 function newArray() {
   array = [];
   for (let i = 0; i < 12; i++) {
     array.push(Math.floor(Math.random() * 90) + 10);
   }
-  array.sort((a, b) => a - b);          // keep it sorted
+  array.sort((a, b) => a - b);         
   drawBars(array, {});
   showMessage("New sorted array created. Type a value to search for.");
 }
 
-// Draw bars with optional colour states.
+
 function drawBars(arr, state) {
   const area = document.getElementById("barsArea");
   area.innerHTML = "";
@@ -42,10 +37,10 @@ function saveFrame(state) {
   frames.push(Object.assign({}, state));
 }
 
-/* ---------- LINEAR SEARCH ---------- */
+
 function linearSearch(target) {
   for (let i = 0; i < array.length; i++) {
-    saveFrame({ [i]: "compare" });          // checking this index
+    saveFrame({ [i]: "compare" });          
     if (array[i] === target) {
       saveFrame({ [i]: "found" });
       return i;
@@ -54,7 +49,7 @@ function linearSearch(target) {
   return -1;
 }
 
-/* ---------- BINARY SEARCH (array must be sorted) ---------- */
+
 function binarySearch(target) {
   let low = 0;
   let high = array.length - 1;
@@ -62,7 +57,7 @@ function binarySearch(target) {
   while (low <= high) {
     const mid = Math.floor((low + high) / 2);
 
-    // Show the current active range in purple and the mid in orange.
+   
     const state = {};
     for (let i = low; i <= high; i++) state[i] = "range";
     state[mid] = "compare";
@@ -72,15 +67,15 @@ function binarySearch(target) {
       saveFrame({ [mid]: "found" });
       return mid;
     } else if (array[mid] < target) {
-      low = mid + 1;        // search the right half
+      low = mid + 1;       
     } else {
-      high = mid - 1;       // search the left half
+      high = mid - 1;       
     }
   }
   return -1;
 }
 
-/* ---------- Run + animate ---------- */
+
 function startSearch(type) {
   if (playing) return;
   if (array.length === 0) newArray();
