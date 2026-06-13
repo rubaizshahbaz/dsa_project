@@ -1,11 +1,7 @@
-/* =========================================================
-   BINARY SEARCH TREE (BST) VISUALIZER
-   Rule: values smaller than a node go LEFT, larger go RIGHT.
-   Each node is an object: { value, left, right }.
-   ========================================================= */
+
 
 const SVG_NS = "http://www.w3.org/2000/svg";
-let root = null;            // the top node of the tree (null = empty)
+let root = null;            
 
 function getValue() {
   const input = document.getElementById("valueInput");
@@ -22,7 +18,7 @@ function showMessage(text) {
   document.getElementById("message").textContent = text;
 }
 
-/* ---------- INSERT ---------- */
+
 function insertNode() {
   const value = getValue();
   if (value === null) return;
@@ -31,7 +27,7 @@ function insertNode() {
   showMessage("Inserted " + value + " into the tree.");
 }
 
-// Recursively find the correct spot and add the new node.
+
 function insertHelper(node, value) {
   if (node === null) {
     return { value: value, left: null, right: null };
@@ -41,11 +37,11 @@ function insertHelper(node, value) {
   } else if (value > node.value) {
     node.right = insertHelper(node.right, value);
   }
-  // If value already exists we ignore it (no duplicates).
+ 
   return node;
 }
 
-/* ---------- DELETE ---------- */
+
 function deleteNode() {
   const value = getValue();
   if (value === null) return;
@@ -66,11 +62,11 @@ function deleteHelper(node, value) {
   } else if (value > node.value) {
     node.right = deleteHelper(node.right, value);
   } else {
-    // Found the node to delete. Three cases:
-    if (node.left === null) return node.right;   // only right child / none
-    if (node.right === null) return node.left;   // only left child
+    
+    if (node.left === null) return node.right;  
+    if (node.right === null) return node.left;   
 
-    // Two children: replace value with the smallest value on the right side.
+   
     let successor = node.right;
     while (successor.left !== null) successor = successor.left;
     node.value = successor.value;
@@ -79,7 +75,7 @@ function deleteHelper(node, value) {
   return node;
 }
 
-// Does the tree contain a value?
+
 function contains(node, value) {
   if (node === null) return false;
   if (value === node.value) return true;
@@ -88,12 +84,12 @@ function contains(node, value) {
     : contains(node.right, value);
 }
 
-/* ---------- SEARCH (animated) ---------- */
+
 function searchNode() {
   const value = getValue();
   if (value === null) return;
 
-  // Build the path of nodes we visit from the root downwards.
+  
   const path = [];
   let current = root;
   while (current !== null) {
@@ -105,7 +101,7 @@ function searchNode() {
   draw();
   let step = 0;
   const timer = setInterval(() => {
-    if (step > 0) highlightNode(path[step - 1], "");      // un-highlight previous
+    if (step > 0) highlightNode(path[step - 1], "");     
 
     if (step >= path.length) {
       clearInterval(timer);
@@ -124,7 +120,7 @@ function searchNode() {
   }, 700);
 }
 
-/* ---------- INORDER TRAVERSAL (left, root, right => sorted) ---------- */
+
 function inorder() {
   const order = [];
   collectInorder(root, order);
@@ -160,12 +156,7 @@ function clearTree() {
   showMessage("Tree cleared.");
 }
 
-/* =========================================================
-   DRAWING
-   We give every node an (x, y) position:
-   - x comes from its order in an inorder walk (keeps left<right).
-   - y comes from its depth (level) in the tree.
-   ========================================================= */
+
 function draw() {
   const svg = document.getElementById("treeCanvas");
   svg.innerHTML = "";
@@ -174,7 +165,7 @@ function draw() {
     return;
   }
 
-  // Step 1: walk the tree inorder to give each node an x-slot.
+ 
   const positioned = [];
   let counter = { i: 0 };
   assignPositions(root, 0, counter, positioned);
@@ -183,19 +174,19 @@ function draw() {
   const gapX = width / (positioned.length + 1);
   const gapY = 80;
 
-  // Convert slot/depth into real pixel coordinates.
+ 
   positioned.forEach((p) => {
     p.x = gapX * (p.slot + 1);
     p.y = 40 + p.depth * gapY;
   });
 
-  // Step 2: draw edges first (so they sit behind the circles).
+ 
   positioned.forEach((p) => {
     if (p.node.left) drawEdge(svg, p, find(positioned, p.node.left));
     if (p.node.right) drawEdge(svg, p, find(positioned, p.node.right));
   });
 
-  // Step 3: draw the circle + value for each node.
+  
   positioned.forEach((p) => {
     const circle = document.createElementNS(SVG_NS, "circle");
     circle.setAttribute("cx", p.x);
@@ -209,7 +200,7 @@ function draw() {
   });
 }
 
-// Recursively assign an inorder slot + depth to every node.
+
 function assignPositions(node, depth, counter, list) {
   if (node === null) return;
   assignPositions(node.left, depth + 1, counter, list);
@@ -243,7 +234,7 @@ function addText(svg, x, y, text, color, dataValue) {
   svg.appendChild(t);
 }
 
-// Change the colour class of a node circle by its value.
+
 function highlightNode(value, cls) {
   const circle = document.querySelector(
     '#treeCanvas circle[data-value="' + value + '"]'
